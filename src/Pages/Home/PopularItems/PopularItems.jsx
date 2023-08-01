@@ -16,8 +16,8 @@ const PopularItems = () => {
     <section className="mb-12">
       <div>
         <TitleSection
-          heading={"Check It out"}
-          subHeading={"---From Our Menu---"}
+          heading={"From Our Menu"}
+          subHeading={"---Check it out---"}
         ></TitleSection>
       </div>
 
