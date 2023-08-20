@@ -41,10 +41,10 @@ const Menu = () => {
       <MenuCategory
         items={dessert}
         img={desertsImg}
-        title={"Deserts"}
+        title={"dessert"}
       ></MenuCategory>
-      <MenuCategory items={pizza} img={pizzaImg} title={"Pizza"}></MenuCategory>
-      <MenuCategory items={salad} img={saladImg} title={"Salad"}></MenuCategory>
+      <MenuCategory items={pizza} img={pizzaImg} title={"pizza"}></MenuCategory>
+      <MenuCategory items={salad} img={saladImg} title={"salad"}></MenuCategory>
       <MenuCategory items={soup} img={soupImg} title={"soup"}></MenuCategory>
     </div>
   );

@@ -25,7 +25,7 @@ const Featured = () => {
             voluptatem quasi consectetur iusto molestias ipsa et numquam
             officiis consequatur?
           </p>
-          <button className="btn btn-outline my-4 text-white border-0 border-b-4">
+          <button className="btn btn-outline my-4 border-0 border-b-4">
             Order Now
           </button>
         </div>
