@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -10,8 +10,11 @@ import { AuthContext } from "../../contextProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { logIn } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(true);
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -30,6 +33,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(from, { replace: true });
     });
   };
   const handleValidator = (event) => {
@@ -94,7 +98,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  disabled={disabled}
+                  disabled={false}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"

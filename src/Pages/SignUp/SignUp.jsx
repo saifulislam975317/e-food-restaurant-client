@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contextProvider/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, userProfileUpdate } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,6 +15,14 @@ const SignUp = () => {
   const onSubmit = (data) => {
     signUp(data.email, data.password).then((result) => {
       const user = result.user;
+      userProfileUpdate(data.name, data.photo)
+        .then(() => {
+          console.log("profile updated");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       console.log(user);
     });
   };
@@ -42,6 +51,17 @@ const SignUp = () => {
                 {errors.name && (
                   <span className="text-red-600">Name is required</span>
                 )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("photo")}
+                  placeholder="Enter your photo url"
+                  className="input input-bordered"
+                />
               </div>
               <div className="form-control">
                 <label className="label">
