@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contextProvider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { signUp, userProfileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -17,8 +20,31 @@ const SignUp = () => {
       const user = result.user;
       userProfileUpdate(data.name, data.photo)
         .then(() => {
-          console.log("profile updated");
-          navigate("/");
+          const saveUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("sign up data", data);
+              if (data.acknowledged) {
+                reset();
+                console.log("profile updated");
+
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "user created successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
         })
         .catch((error) => {
           console.log(error);
@@ -102,16 +128,13 @@ const SignUp = () => {
                     characters
                   </p>
                 )}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">signup</button>
               </div>
             </form>
+            <div className="divider">OR</div>
+            <SocialLogin></SocialLogin>
             <p className="p-10">
               Already have an account?{" "}
               <Link className="ml-2" to="/login">

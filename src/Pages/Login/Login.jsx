@@ -8,6 +8,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../contextProvider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -105,6 +106,7 @@ const Login = () => {
                 />
               </div>
             </form>
+            <SocialLogin></SocialLogin>
             <p className="p-10">
               Do not have an account?
               <Link className="text-green-500 ml-2" to="/signUp">

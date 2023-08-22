@@ -1,16 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../contextProvider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
-const useCart = () => {
+const useAdmin = () => {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem("access-token");
-
-  const { data: cart = [], refetch } = useQuery({
-    queryKey: ["cart", user?.email],
+  const { data, isLoading: adminLoading } = useQuery({
+    queryKey: ["isAdmin", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/cart?email=${user?.email}`,
+        `http://localhost:5000/users/admin?email=${user?.eamil}`,
         {
           headers: {
             authorization: `bearer ${token}`,
@@ -20,7 +19,8 @@ const useCart = () => {
       return res.json();
     },
   });
-  return [cart, refetch];
+
+  return [data, adminLoading];
 };
 
-export default useCart;
+export default useAdmin;

@@ -18,7 +18,6 @@ const Menu = () => {
     bgImageAlt="the menu"
     strength={-200}
   >
-    Blur transition from min to max
     <div style={{ height: "200px" }} />
   </Parallax>;
   const [menu] = useMenu();
@@ -37,12 +36,13 @@ const Menu = () => {
         subHeading={"Don't miss"}
         heading={"Today's offer"}
       ></TitleSection>
-      <MenuCategory items={offered}></MenuCategory>
+      <MenuCategory items={offered} title={"offered"}></MenuCategory>
       <MenuCategory
         items={dessert}
         img={desertsImg}
         title={"dessert"}
       ></MenuCategory>
+
       <MenuCategory items={pizza} img={pizzaImg} title={"pizza"}></MenuCategory>
       <MenuCategory items={salad} img={saladImg} title={"salad"}></MenuCategory>
       <MenuCategory items={soup} img={soupImg} title={"soup"}></MenuCategory>

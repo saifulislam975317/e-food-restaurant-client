@@ -31,7 +31,7 @@ const NavBar = () => {
         <Link to="/secret">Secret</Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/dashboard/myCart">
           <AiOutlineShoppingCart className="text-xl"></AiOutlineShoppingCart>
           <span className="badge badge-secondary">+{cart.length || 0}</span>
         </Link>
