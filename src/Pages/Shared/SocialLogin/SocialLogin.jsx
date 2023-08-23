@@ -42,6 +42,7 @@ const SocialLogin = () => {
         className="btn btn-circle  btn-outline w-full my-4"
       >
         <FaGoogle className="font-bold text-xl"></FaGoogle>
+        Google
       </button>
     </div>
   );

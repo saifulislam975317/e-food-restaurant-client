@@ -106,6 +106,7 @@ const Login = () => {
                 />
               </div>
             </form>
+            <div className="divider">OR</div>
             <SocialLogin></SocialLogin>
             <p className="p-10">
               Do not have an account?

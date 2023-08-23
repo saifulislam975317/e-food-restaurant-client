@@ -40,7 +40,7 @@ const MyCart = () => {
 
       <div className="flex justify-evenly items-center uppercase h-[60px] font-semibold">
         <h1>Total orders: {cart.length}</h1>
-        <p>price: ${total}</p>
+        <p>price: ${Math.round(total)}</p>
         <button className="btn btn-warning btn-sm">pay</button>
       </div>
       <div className="overflow-x-auto">

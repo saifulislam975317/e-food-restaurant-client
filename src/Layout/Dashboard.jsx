@@ -19,9 +19,8 @@ import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = true;
-  // const [data] = useAdmin();
-  // console.log("admin data", data);
+  const [isAdmin] = useAdmin();
+
   const [cart] = useCart();
   return (
     <div className="drawer lg:drawer-open">
@@ -47,7 +46,7 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/addItems">
+                <NavLink to="/dashboard/addItem">
                   <ImSpoonKnife></ImSpoonKnife>Add Items
                 </NavLink>
               </li>
@@ -55,6 +54,14 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/manage">
                   <AiOutlineMenuFold></AiOutlineMenuFold>Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myCart">
+                  <AiOutlineShoppingCart></AiOutlineShoppingCart>My Cart
+                  <span className="badge badge-secondary">
+                    +{cart.length || 0}
+                  </span>
                 </NavLink>
               </li>
               <li>
