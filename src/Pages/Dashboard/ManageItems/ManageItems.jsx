@@ -3,6 +3,7 @@ import { BiSolidEdit } from "react-icons/bi";
 import useMenu from "../../../hooks/useMenu";
 import TitleSection from "../../Shared/TitleSection/TitleSection";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, , refetch] = useMenu();
@@ -34,9 +35,7 @@ const ManageItems = () => {
       }
     });
   };
-  const handleUpdate = (item) => {
-    console.log(item);
-  };
+
   return (
     <div className="w-full">
       <TitleSection
@@ -80,12 +79,11 @@ const ManageItems = () => {
                 <td>{item.category}</td>
                 <td>{item.price}</td>
                 <td>
-                  <button
-                    onClick={() => handleUpdate(item)}
-                    className="btn btn-ghost  bg-green-600 text-white"
-                  >
-                    <BiSolidEdit></BiSolidEdit>
-                  </button>
+                  <Link to={`/dashboard/manageItems/${item._id}`}>
+                    <button className="btn btn-ghost  bg-green-600 text-white">
+                      <BiSolidEdit></BiSolidEdit>
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button
