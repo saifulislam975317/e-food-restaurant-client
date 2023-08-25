@@ -40,7 +40,7 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/admin">
+                <NavLink to="/dashboard/adminHome">
                   <AiFillHome></AiFillHome>Admin Home
                 </NavLink>
               </li>
